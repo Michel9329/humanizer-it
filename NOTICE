@@ -1,0 +1,8 @@
+humanizer-it
+Copyright (c) 2026 Michel Dimitri
+
+This repository is released under the MIT License (see LICENSE), with one exception:
+the English before/after examples in reference/esempi.md are quoted or condensed from
+Wikipedia, "Signs of AI writing" (https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing),
+and remain under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/),
+with attribution to Wikipedia and its authors.
