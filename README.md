@@ -11,10 +11,14 @@ Built with Claude Code, designed and reviewed by Michel Dimitri.
 The skill gives Claude a working canon of AI writing tells and what to do about them:
 
 - 10 families of tells (AI vocabulary, copula avoidance, rhetorical parallelism, rule of three, interpretive gerunds, puffery, serial connectives and closing summaries, flat structure, vague attribution, mechanical artifacts).
+- Six more signals adapted from blader/humanizer 4.0.0, with Italian examples: the objection nobody raised, stacked hedges, the passive that hides who acts, vague links ("è legato a"), the first line that repeats the heading, and re-explaining to someone who already knows.
+- Tells of interface text, which prose rules miss: full stops and two-beat slogans in headings, an eyebrow line above every heading, code-style labels ("// servizi"), ornamental numbering, all-caps subtitles, rows of labels that repeat the paragraph above.
+- Assistant tics taken from the system prompts Anthropic publishes (praising the question, chains of apologies, echoing the request, unrequested extras at the end), with Italian examples, for texts that answer someone.
 - A cluster rule, so one "fondamentale" in a paragraph does not trigger a rewrite.
 - A counter-canon: what is NOT a tell, so it does not over-correct good human prose.
 - Positive levers: what to add (specific detail, irregular rhythm, plain verbs, an actual opinion), not only what to remove.
 - Three modes: WRITE (before drafting), REWRITE (deep rewrite of an existing text, structure first), AUDIT (a table of findings, no edits).
+- A rule that the text it works on is material, never instructions. A note "to the AI", a fake operator or system message, or a closing tag inside a pasted text is edited or removed like the rest of the text, never followed. This is the skill's defence against prompt injection.
 - A Done check with a one-line `grep` for the hard evidence (em-dashes, chatbot residue such as `oaicite`, placeholders, a few banned formulas).
 
 ## Why it exists
@@ -28,6 +32,8 @@ Personal (all projects):
 ```bash
 git clone https://github.com/Michel9329/humanizer-it ~/.claude/skills/humanizer-it
 ```
+
+On Windows, in PowerShell: `git clone https://github.com/Michel9329/humanizer-it "$HOME\.claude\skills\humanizer-it"`.
 
 Single project: put the folder under `.claude/skills/humanizer-it/` in that project.
 
@@ -59,18 +65,41 @@ More pairs, with the reasoning, in `reference/esempi.md`.
 
 | File | What it holds |
 |---|---|
-| `SKILL.md` | The canon: rules, 10 families, positive levers, modes, Done check, sources |
-| `reference/parole.md` | Word and pattern lists, IT and EN, banned and signal tiers, vocabulary eras |
+| `SKILL.md` | The canon: rules, 10 families, six signals, interface text, positive levers, modes, Done check, sources |
+| `reference/parole.md` | Word and pattern lists, IT and EN, banned and signal tiers, assistant tics, vocabulary eras |
 | `reference/esempi.md` | Before/after examples per family |
 | `reference/casi-reali.md` | Documented failure cases: the pattern, a generic before and after, the rule it produced |
+| `test/` | The test suite (see below) and its fixtures |
+| `CHANGELOG.md` | What changed, by date |
+
+## Tests
+
+```bash
+bash test/run.sh
+```
+
+- `test/done-check.sh` reads the grep pattern from `SKILL.md`, so the test and the documentation cannot drift apart. It splits the pattern into its alternatives and expands the groups, and every resulting branch must flag at least one line of `test/fixtures/must-flag.txt`. Every line there must be flagged, no line of `test/fixtures/must-pass.txt` (ordinary Italian, including the near misses) may be flagged, and each documented false positive in `test/fixtures/known-false-positives.txt` must be quoted in `SKILL.md` and still be flagged. All of this runs under `LC_ALL=C` and `LC_ALL=C.UTF-8`, on LF and CRLF copies of the fixtures, and the two locales must flag the same lines. The script also fails if grep prints a warning about the pattern, or if the pattern uses constructs whose meaning depends on the locale.
+- `test/repo-check.sh` checks the front matter of `SKILL.md` (a skill name Claude Code accepts, a description within the length limit that is valid YAML), the counts the text states, that every file and relative link named in the Markdown files exists, and that no path or file name from a private workspace was left in the text. Then it installs the skill into a temporary `~/.claude/skills/humanizer-it` (a `git clone`, or a copy of the working tree when there are uncommitted changes), checks the installed copy, and runs the pattern test there from another directory.
+
+The suite needs bash 4 or newer, GNU grep, sed, awk, find and git. It runs offline and writes only to temporary directories it removes at the end. CI runs it on Ubuntu and on Windows (Git Bash).
+
+The skill was extracted from a private workspace. Maintainers can also check that no private name slipped in: `HUMANIZER_IT_PRIVATE_TERMS=/path/to/list bash test/run.sh`, with one term per line, matched as whole words, case-sensitive. The list stays outside the repository.
+
+## Security
+
+The skill is text: rules, word lists and examples. The only command it asks Claude to run is the read-only `grep` of the Done check, on the file being checked. Text handed to the skill is treated as material, never as instructions (see `SKILL.md`, "Modalità operative").
+
+The test scripts do not use `eval`, make no network calls and write only inside temporary directories. The CI workflow has read-only permissions, does not keep the checkout token, and does not run on `pull_request_target`.
 
 ## Known limits
 
 - It reduces tells, it does not make a text "undetectable", and it should not be used to pass off AI text as human work where disclosure is expected.
+- The grep finds only mechanical evidence. The families, the six signals and the interface tells are judged by reading, and the tests do not check that judgement.
+- The grep has known false positives, listed in the Done check: "a 360 gradi" used literally, "sinergia" in a technical sense, "XX-XX" inside a range of centuries.
 - The lexical lists age. AI vocabulary changes with each model generation; the lists need a review now and then (WP:AISIGNS is the best upstream to follow).
 - Thresholds (cluster rule, sentence length) were calibrated on a small set of human and generated texts, mostly marketing copy and journalism. Literary prose and legal text are out of scope.
 - The Done check treats em-dashes and en-dashes as banned. That is a choice of this canon, not a rule of Italian typography; delete the first two alternatives (the two dash characters) from the grep pattern if your style allows dashes.
-- The automated test checks the Done check as a whole: a sample with known tells must be flagged and a clean sample must pass. It does not test each pattern on its own.
+- The tests use GNU grep. The pattern is plain POSIX extended regex and should work with BSD grep on macOS, but that is not tested.
 - The case file comes from one author's reviews. A few entries are personal taste (for example the word "fuffa") and are marked as such.
 - Not tested with a statistical AI detector.
 
@@ -79,6 +108,8 @@ More pairs, with the reasoning, in `reference/esempi.md`.
 **Cos'è.** Una skill di Claude Code che insegna a scrivere e riscrivere testi che non suonano generati da AI. Funziona in italiano, con supporto per l'inglese.
 
 **A chi serve.** A chi scrive in italiano con l'aiuto di un modello (blog, copy per siti, email, testi commerciali) e vuole un testo che un lettore vero non riconosca subito come "da ChatGPT". Serve anche a chi rivede testi altrui: la modalità AUDIT produce una tabella di segnali, senza toccare il file.
+
+**Cosa contiene.** Le dieci famiglie di segnali, sei segnali presi da blader/humanizer 4.0.0, i segnali dei testi di interfaccia (titoli, occhielli, etichette), i tic da assistente presi dai prompt di sistema che Anthropic pubblica, le leve positive e tre modalità di lavoro. Il testo da riscrivere o da controllare è materiale, mai istruzioni: una nota "per l'AI" dentro un testo incollato si corregge o si toglie, non si esegue.
 
 **Come si installa.** Copia la cartella in `~/.claude/skills/humanizer-it/` (tutti i progetti) oppure in `.claude/skills/humanizer-it/` dentro il progetto.
 
@@ -92,14 +123,18 @@ More pairs, with the reasoning, in `reference/esempi.md`.
 
 La seconda frase vale solo se è vera: la skill non inventa fatti, numeri o opinioni. Se manca il dettaglio concreto, lo chiede.
 
-**Limiti.** Riduce i segnali, non rende un testo "indistinguibile", e non va usata per spacciare come umano un testo AI dove serve dichiararlo. Le liste di parole invecchiano. Le soglie sono tarate su pochi testi, soprattutto copy e giornalismo.
+**Test.** `bash test/run.sh` prova il pattern del Done check ramo per ramo, su righe che devono essere segnalate e su righe di italiano normale che non devono esserlo, con due locale e con fine riga LF e CRLF. Controlla anche il front matter, i file citati e l'installazione in una cartella temporanea. Gira senza rete e scrive solo in cartelle temporanee.
+
+**Limiti.** Riduce i segnali, non rende un testo "indistinguibile", e non va usata per spacciare come umano un testo AI dove serve dichiararlo. Il grep trova solo le prove meccaniche: famiglie e segnali si giudicano leggendo. Le liste di parole invecchiano. Le soglie sono tarate su pochi testi, soprattutto copy e giornalismo.
+
+**Modifiche.** Sono in `CHANGELOG.md`, con le date.
 
 ## Credits
 
 The skill is original text, but it builds on public work. Ideas, taxonomy and thresholds come mainly from the sources below; where a repository has a license it is listed. Other sources are cited where they are used, in the files under `reference/`.
 
 - Wikipedia, "Signs of AI writing" (WP:AISIGNS), https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing. Text under CC BY-SA 4.0. Several English before/after examples in `reference/esempi.md` are quoted or condensed from the diffs cited there and stay under CC BY-SA 4.0.
-- blader/humanizer, https://github.com/blader/humanizer. MIT, Copyright (c) 2025 Siqi Chen. Taxonomy, audit loop, false-positive notes.
+- blader/humanizer, https://github.com/blader/humanizer. MIT, Copyright (c) 2025 Siqi Chen. Taxonomy, audit loop, false-positive notes. The six signals in `SKILL.md` and the rule that the text is material, not instructions, are adapted from version 4.0.0, rewritten with Italian examples. One rule new in 4.0.0 was left out on purpose: it allows adding a detail that sounds true, and this skill does not invent facts.
 - harshaneel/humanize, https://github.com/harshaneel/humanize. MIT, Copyright (c) 2026 Harshaneel Gokhale. Positive levers with numeric thresholds.
 - mshumer/unslop, https://github.com/mshumer/unslop. MIT, Copyright (c) 2026 Matt Shumer. Method for building a custom slop list.
 - sam-paech/slop-forensics, https://github.com/sam-paech/slop-forensics. MIT, Copyright (c) 2025 Sam Paech. Same method, words and n-grams.
@@ -108,6 +143,8 @@ The skill is original text, but it builds on public work. Ideas, taxonomy and th
 - Accademia della Crusca, "Sui testi generati dall'intelligenza artificiale", https://accademiadellacrusca.it/it/contenuti/sui-testi-generati-dall-intelligenza-artificiale-verso-un-nuovo-rapporto-tra-norma-e-uso/46422
 - Antonelli, "Alfabit" (Il Mulino 2026), and De Cesare (2026), for the Italian notions of "IA-taliano" and "criptoinglese".
 - Anthropic, Claude prompting best practices, https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
+- Anthropic, published system prompts, https://platform.claude.com/docs/en/release-notes/system-prompts. Source of the assistant tics in `reference/parole.md`, paraphrased in Italian, not quoted.
+- The video "20 AI Design Slop Indicators" (@charles.unemployed on TikTok, 3 November 2026), the starting point for the interface text tells.
 
 ## License
 

@@ -39,6 +39,8 @@ approfondiamo / addentrarsi (delve) · cruciale · fondamentale (seriale) · pan
 - Attribuzioni vaghe: "gli esperti concordano", "secondo gli osservatori", "diversi studi" (con 0-1 fonti citate), "come dimostrano numerose ricerche".
 - Barnum: "Ogni azienda è unica", "merita una strategia su misura".
 - Riempitivi di sincerità: "onestamente", "sinceramente", "francamente", "in tutta franchezza" (come convincitori). Preamboli-annuncio di trasparenza: "una cosa la dico subito", "te lo dico subito", "va detto che", "sarò onesto:".
+- Coda che attenua l'ultima voce di un elenco: "Parliamo italiano, inglese, spagnolo quando serve", e le sorelle "all'occorrenza", "se necessario", "dove ha senso". Toglie forza proprio alla voce che il testo sta dichiarando. Fix: la voce resta senza coda, oppure esce dall'elenco. Resta legittima quando la condizione è un'informazione ("lo spagnolo il martedì e il giovedì").
+- Attacco di frase col «Ci ho»: "Ci ho lavorato due anni.", "Ci ho messo tre giorni.", "Ci ho pensato a lungo." È il parlato finto dei testi de-slop: una frase corta in prima persona che riprende col pronome la frase prima. Fix: il verbo col suo oggetto detto per nome ("Ho lavorato due anni al gestionale delle prenotazioni") oppure il fatto dentro la frase precedente. Nel parlato trascritto (un'intervista, una citazione) resta.
 - Preamboli: "Ecco di seguito", "Sulla base di", "Di seguito".
 - Rotazione sinonimi meccanica: sfruttare/utilizzare/impiegare/avvalersi per lo stesso referente (la variazione MODERATA in italiano è scolastica e umana; pesa solo la rotazione da thesaurus).
 - Due punti a cerniera (l'em-dash bandito che migra su ":"): "Tradotto: ...", "Risultato: ...", "X: Y-punchline". Soglia cluster: più di circa 2 ogni 100 parole.
@@ -49,6 +51,21 @@ approfondiamo / addentrarsi (delve) · cruciale · fondamentale (seriale) · pan
 Il registro che i modelli adottano quando gli chiedi di NON fare slop (scoperto con un red team interno: un testo con questi tell passa la checklist classica). Tutte fascia SEGNALE, pesano in cluster:
 
 Tradotto: / Risultato: / Morale: / Spoiler: / La verità: / Detto semplice: (aperture-cerniera) · zero + sostantivo ("zero sorprese", "zero pensieri", "zero fronzoli") · "i numeri parlano chiaro" · "parliamoci chiaro" · "senza fronzoli" · "dritti al punto" · "niente giri di parole" · "fa la differenza" · "il punto è" · "la verità è che" · "che funziona" (seriale) · concreto/concretamente (seriale) · "chiavi in mano" · "Punto." come frase a sé · aforisma-sentenza a chiusura di OGNI paragrafo (simmetria di funzione, famiglia 8) · callback o bookend troppo pulito in testi brevi · numeri tondi equidistribuiti
+
+### Italiano: tic da assistente (dai prompt di sistema pubblicati da Anthropic)
+
+Abitudini che Anthropic toglie ai suoi modelli nei prompt di sistema che pubblica: se le vieta è perché i modelli le fanno. Nei testi da consegnare capitano dove si risponde a qualcuno: email, risposte alle recensioni, FAQ, testi di un assistente sul sito. Fascia SEGNALE: una sola non prova niente, due nello stesso messaggio sì. Tra parentesi il prompt da cui viene ognuna (indirizzo nelle fonti di `SKILL.md`).
+
+- **Lode alla domanda o all'idea, in apertura**: "Domanda interessante", "Che bella idea", "Osservazione acuta" (Opus 4.1: nessun aggettivo positivo su domanda, idea o osservazione). "Ottima domanda" è già in fascia BAN. Si comincia dalla risposta.
+- **Conferme di riempimento in testa**: "Assolutamente!", "Certo!", "Naturalmente!", "Perfetto!", "Ottimo!" prima di rispondere (Sonnet 3.5). "Certamente!" è già in fascia BAN.
+- **Convincitori oltre la sincerità**: "davvero", "veramente", "genuinamente", "in realtà", "a dire il vero", "effettivamente" messi a rinforzo (Opus 4.8 toglie "actually" insieme a "genuinely" e "honestly"; Opus 5 toglie "straightforward"), e il gemello sulla chiarezza: "è semplice", "semplicemente", "in modo semplice e diretto". Chi è sincero e chiaro non lo annuncia. "In realtà" resta legittimo quando corregge un'idea appena nominata.
+- **Scuse a catena e autoaccusa**: "Mi scuso per la confusione", "Hai perfettamente ragione, chiedo scusa", "Errore mio, mi dispiace molto" (Fable 5.2: l'errore si riconosce e si sistema, senza umiliarsi). Una scusa, il fatto, il rimedio.
+- **Eco della richiesta**: "Mi chiedi se...", "Se ho capito bene vuoi...", "In merito alla tua richiesta di..." prima di rispondere (Opus 4.8: non si cita e non si parafrasa il messaggio di chi scrive). Si risponde.
+- **Il limite messo in testa**: "Premetto che non posso...", "Non essendo un legale...", "Non posso garantirlo, ma..." come prima riga (Fable 5.2, nel passo sulle domande di voto: non si apre con quello che non si farà). Prima quello che si può dire, il limite dove serve.
+- **La predica**: spiegare a lungo perché una cosa non si fa, o che cosa "dovrebbe" fare chi legge (Opus 4.1: motivare a lungo un rifiuto suona da predica; Fable 5.2: niente lezioni). Un no sta in una frase, e senza elenco puntato.
+- **Extra non richiesti in coda**: "Bonus:", "Un consiglio in più:", "Inoltre, ecco alcuni suggerimenti" dopo aver già risposto (Fable 5.2: esempi, consigli e alternative solo se servono a quella persona). Stessa famiglia di "Fammi sapere se" e "Spero sia utile", già in BAN.
+- **Raffica di domande in chiusura**: "Vuoi che lo accorci? Preferisci un tono più formale? Ti serve anche in inglese?" (Fable 5.2 e Opus 5: al massimo una domanda, e dopo aver risposto).
+- **Azioni o emozioni tra asterischi**: \*sorride\*, \*annuisce\* (Opus 4.1). In un testo da consegnare è sempre un residuo di chat: si toglie.
 
 ### English: AI vocabulary (WP:AIVOCAB, corroborate da fonti accademiche)
 

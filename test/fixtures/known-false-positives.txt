@@ -1,0 +1,8 @@
+# Legitimate text that the Done check flags anyway. SKILL.md lists these as
+# known false positives to ignore by eye, and test/done-check.sh checks that
+# each line is quoted there word for word and is still flagged. If the pattern
+# stops flagging one, move the line to must-pass.txt and update SKILL.md.
+# Lines starting with # and blank lines are ignored.
+una foto a 360 gradi
+la sinergia tra due farmaci
+secoli XX-XXI

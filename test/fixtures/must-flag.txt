@@ -1,0 +1,53 @@
+# Lines the Done check in SKILL.md must flag.
+# test/done-check.sh requires every branch of the pattern to flag at least one
+# line here, and every line here to be flagged. Lines starting with # and blank
+# lines are ignored.
+
+# Dashes: this canon bans both in delivered text.
+Il nostro studio — da trent'anni — lavora con passione.
+Aperti dal lunedì al venerdì, 9–13.
+
+# Chatbot residue.
+I prezzi sono aggiornati a ottobre.:contentReference[oaicite:0]{index=0}
+Fonte: rapporto annuale [oai_citation:1‡example.com](https://example.com)
+Le date sono confermate dal comune turn0search3.
+La foto della piazza turn0image2 è del 2024.
+Il comune ha approvato il piano [cite: 4].
+[start_span]Il museo apre alle nove.[end_span]
+<grok-card data-id="a1b2c3" data-type="citation_card"></grok-card>
+<grok_card data-id="d4e5f6"></grok_card>
+Il museo apre alle nove【4†source】.
+Nel documento allegato {attached_file:1} trovi il listino.
+![schema](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/123/schema.png)
+
+# Tracking parameters left by chatbots.
+Orari sul [sito del comune](https://example.com/orari?utm_source=chatgpt.com).
+Leggi la [guida](https://example.com/guida?utm_source=openai).
+Vedi la [mappa](https://example.com/mappa?utm_source=copilot.com).
+Il [regolamento](https://example.com/regole?referrer=grok.com) è cambiato.
+
+# Placeholders.
+Benvenuti da INSERT_NOME_AZIENDA, in città dal 1990.
+Prenota qui: PASTE_LINK_HERE
+Gentile [Nome], grazie per averci scritto.
+Siamo aperti dalle XX-XX.
+
+# Formulas this canon bans in delivered text.
+In conclusione, siamo la scelta giusta per te.
+In sintesi, il servizio costa meno di quanto pensi.
+In sintesi: tre motivi per sceglierci.
+È importante sottolineare che i prezzi includono l'IVA.
+È importante notare che il parcheggio è riservato ai clienti.
+Per questo è importante sottolineare la data di scadenza.
+è importante notare che la consegna è gratuita.
+Ecco di seguito i passaggi da seguire.
+Offriamo una consulenza a 360 gradi.
+Creiamo sinergie tra marketing e vendite.
+
+# Calls to action that lower the effort of replying.
+Mi basta un sì, al resto penso io.
+Per partire mi basta un sì
+mi basta un si, poi ti mando il preventivo.
+Se ti interessa mi basta un si
+Vi basta rispondere a questa mail.
+Per confermare vi basta rispondere con un ok.

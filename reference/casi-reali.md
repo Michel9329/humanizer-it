@@ -2,7 +2,7 @@
 
 Errori veri, emersi usando questa skill su testi destinati a lettori reali (email, siti, preventivi, guide). Ogni caso è riscritto in forma generica: l'esempio conserva il problema, non il testo originale. Per ogni caso trovi lo schema dell'errore, un prima e dopo, e la regola che ne è nata, con la famiglia di `SKILL.md` o il file in cui è stata aggiunta.
 
-Gli esempi "dopo" mostrano la direzione e non vanno copiati: riusarli identici in un testo vero crea esattamente il problema del caso 9.
+Gli esempi "dopo" mostrano la direzione e non vanno copiati: riusarli identici in un testo vero crea esattamente il problema del caso 12.
 
 ## Formule e frasi
 
@@ -48,72 +48,119 @@ Gli esempi "dopo" mostrano la direzione e non vanno copiati: riusarli identici i
 - Dopo: "Prendi la statale verso nord. All'uscita gira a destra. Dopo due chilometri sei arrivato."
 - Regola: istruzioni come al telefono a chi sta guidando: tu, imperativo, una cosa per riga, nessuna promessa di servizio non verificata. Aggiunta a `parole.md`.
 
+### 7. La coda che attenua l'ultima voce di un elenco
+
+- Schema: in un elenco di competenze o di servizi l'ultima voce porta una condizione che non dice niente ("quando serve", "all'occorrenza"). Ammorbidisce proprio la cosa che il testo sta dichiarando.
+- Prima: "Parliamo italiano, inglese, spagnolo quando serve."
+- Dopo: "Parliamo italiano, inglese e spagnolo."
+- Regola: in un elenco una voce c'è o non c'è. La condizione resta solo se è un'informazione. Aggiunta a `parole.md`; è parente delle attenuazioni impilate tra i sei segnali di `SKILL.md`.
+
+### 8. «Ci ho» in testa a una frase
+
+- Schema: una frase corta in prima persona che riprende col «ci» la frase prima. È la texture "parlata" che un modello aggiunge quando gli si chiede di non suonare da AI.
+- Prima: "Un gestionale per le prenotazioni. Ci ho lavorato due anni."
+- Dopo: "Ho lavorato due anni al gestionale delle prenotazioni."
+- Regola: il verbo col suo oggetto detto per nome. Dopo una segnalazione su una formula si cerca la stessa famiglia in tutto il pacchetto (le altre versioni, le altre lingue), non solo nella frase indicata. Aggiunta a `parole.md`.
+
+### 9. Il titolo che racconta un video in tre battute
+
+- Schema: il titolo sopra un video ne ripercorre le scene con tre verbi della stessa forma e chiude con una promessa da dépliant.
+- Prima: "Si piega, si porta, riparte ovunque." (sopra il video di una bici pieghevole)
+- Dopo: una frase sola col gesto che il video mostra: "Piegata, entra nel bagagliaio."
+- Regola: un titolo che accompagna un video dice in una frase la cosa che il video fa vedere, non lo riassume in tre tempi. Famiglia 4, e i testi di interfaccia in `SKILL.md`.
+
 ## Pagine e documenti
 
-### 7. Il testo che descrive se stesso
+### 10. Il testo che descrive se stesso
 
 - Schema: lead, etichette e chiuse che raccontano la forma della pagina invece del contenuto.
 - Prima: "Prima quello che è già deciso. Poi le opzioni. In fondo, mese per mese, i costi." · etichette "In breve", "Da sapere, una volta sola" · chiusa "Li mettiamo tutti, così sapete cosa c'è dietro ogni cifra."
 - Dopo: etichette piane ("Già concordato", "Da sapere"), al massimo una riga di istruzione, poi fatti e numeri.
 - Regola: le istruzioni su come scrivere si applicano, non si scrivono nel testo. Niente etichette che descrivono la funzione del blocco. Famiglia 7, aggiunta a `parole.md`.
 
-### 8. Frase che dice del documento una cosa falsa
+### 11. Frase che dice del documento una cosa falsa
 
 - Schema: una frase poco chiara viene resa più chiara senza chiedersi se dica qualcosa. Il risultato afferma sul documento una cosa che il documento non contiene.
 - Prima: "Il prezzo di ogni passo dipende da quello che il passo consegna, scritto accanto al passo." (accanto c'erano solo nome, durata e prezzo).
 - Dopo: frase tolta, e una tabella "Cosa consegna ogni passo".
 - Regola: davanti a una frase poco chiara si prova prima a toglierla. Ogni frase che descrive il documento ("trovate sotto", "è indicato accanto") si controlla sul documento finito. Famiglia 6.
 
-### 9. Lo stesso tic su progetti diversi
+### 12. Lo stesso tic su progetti diversi
 
 - Schema: una formula del modello ricompare identica in testi di committenti diversi, spesso nei testi di riserva dei componenti, che nessuno sovrascrive e restano in produzione.
 - Prima: "Bastano due parole: al resto pensiamo noi." sotto un modulo contatti, poi di nuovo altrove.
 - Dopo: "Parlaci del tuo progetto e ti diciamo come possiamo aiutarti."
 - Regola: prima di scrivere un microcopy, chiediti se l'hai già usato altrove. Se sì, è un tic. Il test Barnum vale anche tra i propri clienti. Done check, punto 7.
 
-### 10. Uniformità su una serie
+### 13. Uniformità su una serie
 
 - Schema: ogni testo della serie è a posto, ma messi in fila sono tutti uguali. In una serie di email a freddo quasi tutti gli oggetti aprivano con "Chi cerca un {professione} di fiducia a {zona}".
 - Dopo: ogni oggetto ancorato a un fatto positivo e vero del destinatario, nessun oggetto che condivide le prime due parole con un altro.
 - Regola: l'anti-tell si valuta anche sulla serie. Oggetti, incipit o chiuse identici su N pezzi sono un cluster a sé, e sugli oggetti fanno anche da impronta per i filtri antispam. Famiglia 8.
 
-### 11. Inventario di pezzi invece dell'uso
+### 14. Inventario di pezzi invece dell'uso
 
 - Schema: una fase di progetto descritta come elenco di componenti separati da virgole, invece di cosa fa e vede chi la userà.
 - Prima: "Sul tablet: una scheda per ogni cliente, le tue note, lo storico, l'archivio su server in Europa..."
 - Dopo: "Apri la scheda del cliente, scrivi la nota della visita, la volta dopo la ritrovi lì."
 - Regola: una fase si racconta con l'uso. Ogni frase su "cosa succede se non funziona" va riletta con gli occhi di chi paga. Famiglia 9.
 
-### 12. Gergo da strumento in una consegna
+### 15. Gergo da strumento in una consegna
 
 - Schema: un foglio o un PDF per il destinatario scritto con codici e stati da strumento interno, e decorazione che ripete a colori quello che la colonna accanto dice già.
 - Prima: celle come "ERRORE: NOME: il fornitore scrive X, il codice è Y", etichette colorate accanto a ogni riga.
 - Dopo: frasi intere e piane, l'esito in una parola nella prima colonna, nessuna etichetta decorativa.
 - Regola: rileggi ogni cella come la legge il destinatario. Se serve una legenda per capirla, è scritta male. Famiglia 8.
 
+### 16. La riga che ridice il titolo
+
+- Schema: sotto il titolo di una sezione c'è un'introduzione la cui prima metà ripete il titolo ("Qui trovi...", "Le prossime cose da fare...") e solo la seconda dice qualcosa.
+- Prima: titolo "Documenti", sotto "Qui trovi tutti i documenti del progetto. Quando ne carichi uno nuovo, ti arriva una mail di conferma."
+- Dopo: "Quando ne carichi uno nuovo, ti arriva una mail di conferma."
+- Regola: della riga sotto un titolo si toglie per prima la parte che annuncia la sezione; resta l'istruzione o il dato. Famiglie 7 e 9, e il titolo ripetuto dalla prima riga tra i sei segnali di `SKILL.md`.
+
+### 17. Spiegazioni sotto i titoli di un'area riservata
+
+- Schema: in una pagina riservata al cliente ogni titolo ha sotto una riga che spiega la pagina, o il lavoro di chi l'ha preparata, invece di dare un dato.
+- Prima: sotto "Fatture", "Qui le trovate tutte, in ordine di data: così sapete sempre a che punto siamo."
+- Dopo: sotto il titolo solo dati (date, importi, chi ha caricato cosa). Le istruzioni utili vanno nel messaggio che accompagna la pagina, non nella pagina.
+- Regola: in un'area riservata il cliente legge solo quello che gli serve per agire; se una riga spiega, è di troppo. Famiglie 7 e 8.
+
+### 18. Un'etichetta dopo ogni numero in una lettera formale
+
+- Schema: una lettera formale divisa in punti numerati, ognuno aperto da un'etichetta col punto ("1. Oggetto.", "2. Importi.", "3. Termini."), tutti della stessa forma, con gli importi detti due volte.
+- Dopo: i numeri restano, perché l'altra parte risponde "quanto al punto 2"; le etichette no. Ogni punto attacca con la frase ("Prendo atto che...", "Contesto che..."). Un'etichetta resta solo dove introduce un elenco.
+- Regola: in una lettera formale si numera e si attacca subito; un'etichetta per ogni punto è una scaletta riempita. La lunghezza promessa si conta prima di mostrare il testo. Famiglia 8.
+
 ## Metodo
 
-### 13. Il registro post-humanizer
+### 19. Il registro post-humanizer
 
 - Schema: un red team interno ha scritto circa 170 parole di copy per una piccola impresa di servizi che passavano tutto il Done check di allora. Usava i tell che la skill non copriva: sei due punti a cerniera (l'em-dash migrato su ":"), lessico "anti-slop" ("Tradotto:", "Zero sorprese in fattura"), una battuta in chiusura di ogni paragrafo, un richiamo finale all'apertura, sei numeri tondi distribuiti a intervalli regolari.
 - Correzione: famiglia 8 estesa (due punti a cerniera con soglia, simmetria di funzione), sezione sul registro post-humanizer in `parole.md`, Done check riformulato sull'irregolarità invece che su una quota fissa. Lo stesso audit ha mostrato l'errore opposto su testi giornalistici umani, segnalati a torto: soglia dei cluster alzata.
 - Regola: ogni divieto genera il suo tic sostitutivo. La skill va aggiornata seguendo il registro che emerge, non solo le parole.
 
-### 14. Paragrafi-isola
+### 20. Paragrafi-isola
 
 - Schema: paragrafi giustapposti senza legame, cadenza piatta, connettivi da manuale in testa a ogni blocco.
 - Prima: "Inoltre, ... Tuttavia, ... In conclusione, ..."
 - Regola: le transizioni le regge la logica del contenuto. Un testo parlato si giudica col ritmo del parlato: un discorso scritto come scaletta suona duro anche quando gli argomenti sono giusti. Famiglie 7 e 8.
 
-### 15. Riscrivere invece di correggere
+### 21. Riscrivere invece di correggere
 
 - Schema: davanti a una correzione su una riga, il testo approvato viene riscritto da capo e perde la voce di chi l'aveva scritto.
 - Regola: si corregge la riga indicata col delta minimo. Il campione di voce reale vince sulle regole di default (voice calibration). Se il testo è già dell'autore, l'unico ritocco ammesso toglie ambiguità.
 
-### 16. Autovalutazione
+### 22. Autovalutazione
 
 - Schema: chi ha scritto il testo dichiara da solo che "non sa di AI".
 - Regola: il verdetto spetta a chi rivede. Dopo quattro o cinque scarti sullo stesso testo ci si ferma e si ripensa l'impianto invece di produrre la sesta variante. Done check, punto 8.
+
+### 23. Testo personale scritto al posto dell'autore
+
+- Schema: un messaggio che deve dire come sta una persona, scritto dal modello a partire dai suoi appunti. Ne esce un testo composto, a paragrafi ordinati, con un'antitesi costruita (famiglia 3). Alla stesura successiva le frasi dure vengono ammorbidite per seguire una regola di stile, e proprio quelle erano il punto.
+- Dopo: prima il testo di getto dell'autore, poi due o tre attacchi diversi fra cui sceglie la voce, poi un montaggio che tiene le sue frasi e i dettagli che conosce solo lui; le ultime modifiche a frase singola.
+- Regola: per un testo personale il campione di voce si chiede prima di scrivere, non dopo il primo rifiuto. Le frasi che l'autore considera il punto non si ammorbidiscono per stile. Voice calibration, e caso 21.
 
 ## Come aggiungere un caso
 

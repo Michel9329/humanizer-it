@@ -1,0 +1,38 @@
+# Normal Italian (and a little English) that the Done check must NOT flag.
+# Lines starting with # and blank lines are ignored.
+
+# Ranges with the plain hyphen, as the canon asks.
+Aperti dal lunedì al venerdì, 9-13 e 15-19.
+I dati coprono gli anni 2019-2024.
+
+# Typographic quotes and caporali are correct Italian typography.
+Lo chiamano «il forno di sotto».
+Il cartello dice “chiuso per ferie”.
+
+# A minus sign is not a dash.
+Stanotte fuori c'erano −3 gradi.
+
+# "sì" and "si" outside the call to action.
+Sì, consegniamo anche il sabato.
+Mi basta un sito semplice, con gli orari e il telefono.
+Mi basta un secondo per capire se il pezzo è quello giusto.
+Se si rompe, si cambia in garanzia.
+
+# The banned formulas match only when complete.
+Per noi è importante la puntualità.
+È importante per chi arriva in treno sapere che la stazione è a 200 metri.
+La sintesi del progetto è a pagina due.
+In sintesi chimica si parte dall'acido acetico.
+Il cassetto ruota di 360 gradi.
+
+# Look-alikes of placeholders.
+Il lotto XX-12 è già venduto.
+Scrivi il tuo nome nel campo Nome del modulo.
+
+# Words the counter-canon protects.
+Il mercato estero rappresenta il 30% del fatturato.
+Inoltre, il sabato apriamo alle dieci.
+La revisione è fondamentale.
+
+# English.
+The attached file is the invoice for October.
